@@ -1,0 +1,31 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"
+
+[workspace.package]
+authors = ["Toby Fleming <tobywf@users.noreply.github.com>"]
+# categories
+# description
+# documentation
+edition = "2021"
+# exclude
+# homepage
+# include
+# keywords
+license = "MIT or Apache-2.0"
+# license-file
+publish = false
+# readme
+# repository
+rust-version = "1.77.1"
+# version
+
+[workspace.dependencies]
+# logging
+log = "0.4"
+# CLI
+clap = { version = "4.5", default-features = false, features = [
+    "std",
+    "derive",
+    "env",
+] }

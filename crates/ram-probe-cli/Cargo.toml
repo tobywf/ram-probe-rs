@@ -1,0 +1,31 @@
+[package]
+name = "ram-probe"
+version = "0.1.0"
+
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+autoexamples = false
+autobenches = false
+
+include = ["/src", "/README.md", "/LICENSE-APACHE", "/LICENSE-MIT"]
+
+[dependencies]
+# error handling
+color-eyre = "0.6"
+# logging
+log.workspace = true
+pretty_env_logger = "0.5"
+# CLI
+clap = { workspace = true, default-features = false, features = [
+    "std",
+    "color",
+    "help",
+    "usage",
+    "derive",
+    "env",
+] }
+
+ram-probe-rs = { version = "0.1.0", path = "../ram-probe-rs" }

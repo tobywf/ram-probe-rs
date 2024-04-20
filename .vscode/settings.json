@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,
+    "rust-analyzer.imports.granularity.enforce": true,
+    "rust-analyzer.imports.granularity.group": "module",
+}

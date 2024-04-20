@@ -1,0 +1,45 @@
+[package]
+name = "ram-probe-rs"
+version = "0.1.0"
+
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+autoexamples = false
+autobenches = false
+
+include = ["/src", "/README.md", "/LICENSE-APACHE", "/LICENSE-MIT"]
+
+[lib]
+doctest = false
+
+[dependencies]
+# error handling
+eyre = "0.6"
+# logging
+log.workspace = true
+# CLI
+clap = { workspace = true, default-features = false, features = [
+    "std",
+    "derive",
+    "env",
+] }
+# ELF
+# defmt-decoder uses 0.32
+object = { version = "0.35", default-features = false, features = [
+    "std",
+    "read_core",
+    "elf",
+] }
+# MCU
+probe-rs = "=0.23.0"
+# RTT
+defmt-decoder = { version = "=0.3.10", features = [
+    "unstable",
+], optional = true }
+
+[features]
+defmt = ["dep:defmt-decoder"]
+default = ["defmt"]
