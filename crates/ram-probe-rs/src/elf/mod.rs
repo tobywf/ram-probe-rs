@@ -4,13 +4,16 @@ use eyre::{bail, eyre, Result};
 pub use object;
 use object::elf::{FileHeader32, PT_LOAD};
 use object::read::elf::{ElfFile32, ElfSection32, FileHeader as _, ProgramHeader as _};
-use object::read::{Object as _, ObjectSection as _};
+use object::read::Object as _;
+pub use object::read::ObjectSection;
 use object::{FileKind, LittleEndian, ObjectSymbol as _};
 use probe_rs::config::MemoryRange as _;
 use probe_rs::config::MemoryRegion;
 use probe_rs::Target;
 use std::convert::TryInto;
 pub use types::*;
+
+pub type ElfSection<'data, 'file> = ElfSection32<'data, 'file, LittleEndian>;
 
 pub struct Parser<'data> {
     data: &'data [u8],
@@ -123,9 +126,7 @@ impl<'data> Parser<'data> {
         })
     }
 
-    pub fn named_sections(
-        &self,
-    ) -> impl Iterator<Item = (&'data str, ElfSection32<'data, '_, LittleEndian>)> + '_ {
+    pub fn named_sections(&self) -> impl Iterator<Item = (&'data str, ElfSection<'data, '_>)> + '_ {
         self.file
             .sections()
             .filter_map(|section| section.name().ok().map(|name| (name, section)))

@@ -9,15 +9,6 @@ impl fmt::Debug for HexU32 {
     }
 }
 
-#[repr(transparent)]
-pub struct HexU64(pub u64);
-
-impl fmt::Debug for HexU64 {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:08x}", self.0)
-    }
-}
-
 struct SegmentDebug<'a, 'data>(&'a (u64, &'data [u8]));
 
 impl fmt::Debug for SegmentDebug<'_, '_> {

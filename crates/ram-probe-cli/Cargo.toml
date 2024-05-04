@@ -1,16 +1,23 @@
 [package]
-name = "ram-probe"
-version = "0.1.0"
+name = "ram-probe-cli"
+version = "0.2.0"
 
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
 publish.workspace = true
+rust-version.workspace = true
 
 autoexamples = false
 autobenches = false
 
 include = ["/src", "/README.md", "/LICENSE-APACHE", "/LICENSE-MIT"]
+
+[[bin]]
+name = "ram-probe"
+path = "src/main.rs"
+test = false
+bench = false
 
 [dependencies]
 # error handling
@@ -28,4 +35,4 @@ clap = { workspace = true, default-features = false, features = [
     "env",
 ] }
 
-ram-probe-rs = { version = "0.1.0", path = "../ram-probe-rs" }
+ram-probe-rs = { path = "../ram-probe-rs" }

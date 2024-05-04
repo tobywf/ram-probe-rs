@@ -1340,8 +1340,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09"
 
 [[package]]
-name = "ram-probe"
-version = "0.1.0"
+name = "ram-probe-cli"
+version = "0.2.0"
 dependencies = [
  "clap",
  "color-eyre",
@@ -1352,7 +1352,7 @@ dependencies = [
 
 [[package]]
 name = "ram-probe-rs"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "clap",
  "defmt-decoder",
